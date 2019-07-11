@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body >
+<div id="app">
+<form action="demo" >
+<input name="user">
+<button type="submit">测试</button>
+</form>
+<h1>{{message}}</h1>
+</div>
+<script src="js/vue.2.5.13.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+var Vue_demo = new Vue({
+	el:"#app",
+	data:{
+		message:"这里显示返回的数据"
+	},
+	created(){
+        axios.get("http://localhost:8080/WoniuShop/demo")
+            .then(response => this.message = response.data)
+    }
+});
+</script>
+</body>
+</html>

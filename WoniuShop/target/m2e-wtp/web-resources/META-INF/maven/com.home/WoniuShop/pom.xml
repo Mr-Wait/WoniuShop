@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.home</groupId>
+	<artifactId>WoniuShop</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>WoniuShop Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>vue</artifactId>
+			<version>2.6.10</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<!-- tomcat maven插件，实现打包和远程发布 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<!-- 远程tomcat服务器访问地址 -->
+					<url>http://127.0.0.1:8080/manager/text</url>
+					<!-- tomcat里配置的user信息，如果maven的settings.xml里配置过了，这里可省略 -->
+					<server>tomcat8</server>
+					<path>/WoniuShop</path>
+				</configuration>
+			</plugin>
+			<!-- 指定maven项目使用jdk版本 -->
+			 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+            <encoding>UTF-8</encoding>
+            <source>1.8</source>
+            <target>1.8</target>
+            </configuration>
+        </plugin>
+		</plugins>
+	</build>
+
+
+
+</project>

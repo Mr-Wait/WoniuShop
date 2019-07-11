@@ -6,11 +6,11 @@
 </head>
 <body >
 <div id="app">
-<form action="demo" >
-<input name="user">
-<button type="submit">测试</button>
-</form>
-<h1>{{message}}</h1>
+
+<input name="user" v-model:value="user">
+<button @click.stop="getdata()">测试</button>
+
+<h1>{{user}}</h1>
 </div>
 <script src="js/vue.2.5.13.min.js"></script>
 <script src="js/axios.min.js"></script>
@@ -18,10 +18,18 @@
 var Vue_demo = new Vue({
 	el:"#app",
 	data:{
-		message:"这里显示返回的数据"
+		message:"这里显示返回的数据",
+		user:''
+	},
+	methods:{
+		getdata:function(){
+			
+			 axios.get("http://25v593421b.qicp.vip/WoniuShop/demo?user="+this.user)
+	            .then(response => this.message = response.data)
+		}
 	},
 	created(){
-        axios.get("http://localhost:8080/WoniuShop/demo")
+        axios.get("http://25v593421b.qicp.vip/WoniuShop/demo")
             .then(response => this.message = response.data)
     }
 });
